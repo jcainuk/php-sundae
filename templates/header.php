@@ -5,11 +5,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <style>
     .brand {
-      background: #cbb09c !important;
+      background: hsl(184, 91%, 17%) !important;
     }
 
     .brand-text {
-      color: #cbb09c !important;
+      color: hsl(184, 91%, 17%) !important;
     }
 
     form {
