@@ -2,18 +2,22 @@
 
 if (isset($_POST['submit'])) {
 
-  // check email
+  // check email field is not empty using empty() function
   if (empty($_POST['email'])) {
     echo 'An email is required <br/>';
   } else {
-    echo htmlspecialchars($_POST['email']);
+    // check email is valid using php in-built method
+    $email = htmlspecialchars($_POST['email']);
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      echo 'email must be a valid email address <br/>';
+    }
   }
 
   // check title
   if (empty($_POST['title'])) {
     echo 'A title is required <br/>';
   } else {
-    echo htmlspecialchars($_POST['title']);
+    $title = htmlspecialchars($_POST['title']);
   }
 
   // check ingredients
