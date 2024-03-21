@@ -18,11 +18,11 @@ if (isset($_POST['submit'])) {
 
   // check ingredients
   if (empty($_POST['ingredients'])) {
-    echo 'Ingredients are required <br/>';
+    echo 'At least one ingredient is required <br/>';
   } else {
     echo htmlspecialchars($_POST['ingredients']);
   }
-}
+} // end of POST check
 ?>
 <!DOCTYPE html>
 <html lang="en">
