@@ -1,23 +1,29 @@
 <?php
 
+// $_POST and $_GET are global associated arrays in PHP
+
 if (isset($_POST['submit'])) {
 
   // check email field is not empty using empty() function
   if (empty($_POST['email'])) {
     echo 'An email is required <br/>';
   } else {
-    // check email is valid using php in-built method
+    // parse potential xss attack, and check email is valid using php in-built method
     $email = htmlspecialchars($_POST['email']);
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       echo 'email must be a valid email address <br/>';
     }
   }
 
-  // check title
+  // check title field is not empty using empty() function
   if (empty($_POST['title'])) {
     echo 'A title is required <br/>';
   } else {
+    // parse potential xss attack, then check title validity using regex
     $title = htmlspecialchars($_POST['title']);
+    if (!preg_match('/^[a-zA-Z\s]+$/', $title)) {
+      echo 'title must be letters and spaces only <br/>';
+    }
   }
 
   // check ingredients
