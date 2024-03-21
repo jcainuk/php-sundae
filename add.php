@@ -30,7 +30,11 @@ if (isset($_POST['submit'])) {
   if (empty($_POST['ingredients'])) {
     echo 'At least one ingredient is required <br/>';
   } else {
-    echo htmlspecialchars($_POST['ingredients']);
+    // parse potential xss attack, then check ingredients is a comma separated list of words with letters and spaces only
+    $ingredients = htmlspecialchars($_POST['ingredients']);
+    if (!preg_match('/^([a-zA-Z\s]+)(,\s*[a-zA-Z\s]*)*$/', $ingredients)) {
+      echo 'ingredients must be a comma separated list of words<br/>';
+    }
   }
 } // end of POST check
 ?>
