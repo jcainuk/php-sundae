@@ -47,7 +47,8 @@ if (isset($_POST['submit'])) {
   if (array_filter($errors)) {
     echo 'There are errors in the form';
   } else {
-    echo 'form is valid';
+    // redirect to home page
+    header('Location: index.php');
   }
 } // end of POST check
 ?>
