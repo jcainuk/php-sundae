@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) {
 
   // check email field is not empty using empty() function
   if (empty($_POST['email'])) {
-    echo 'An email is required <br/>';
+    $errors['email'] = 'An email is required <br/>';
   } else {
     // parse potential xss attack, and check email is valid using php in-built method
     $email = htmlspecialchars($_POST['email']);
@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
 
   // check title field is not empty using empty() function
   if (empty($_POST['title'])) {
-    echo 'A title is required <br/>';
+    $errors['title'] = 'A title is required <br/>';
   } else {
     // parse potential xss attack, then check title validity using regex
     $title = htmlspecialchars($_POST['title']);
@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
 
   // check ingredients
   if (empty($_POST['ingredients'])) {
-    echo 'At least one ingredient is required <br/>';
+    $errors['ingredients'] = 'At least one ingredient is required <br/>';
   } else {
     // parse potential xss attack, then check ingredients is a comma separated list of words with letters and spaces only
     $ingredients = htmlspecialchars($_POST['ingredients']);
@@ -52,10 +52,13 @@ if (isset($_POST['submit'])) {
   <form action="add.php" method="POST" class="white">
     <label for="">Your Email:</label>
     <input type="text" name="email">
+    <div class="red-text"><?php echo $errors['email'] ?></div>
     <label for="">Sundae Title:</label>
     <input type="text" name="title">
+    <div class="red-text"><?php echo $errors['title'] ?></div>
     <label for="">Ingredients (Comma separated):</label>
     <input type="text" name="ingredients">
+    <div class="red-text"><?php echo $errors['ingredients'] ?></div>
     <div class="center">
       <input type="submit" name="submit" value="submit" class="btn brand z-depth-0">
     </div>
