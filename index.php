@@ -21,6 +21,12 @@ $result = mysqli_query($connection, $sql);
 // fetch the resulting rows as an array (in an associative array)
 $sundaes = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
+// free result from memory
+mysqli_free_result($result);
+
+// close connection
+mysqli_close($connection);
+
 print_r($sundaes);
 
 ?>
