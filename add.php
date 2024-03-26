@@ -1,5 +1,7 @@
 <?php
 
+include('config/db_connect.php');
+
 // initialise persisting form data and sets them all to an empty string
 $title = $email = $ingredients = '';
 
@@ -47,8 +49,24 @@ if (isset($_POST['submit'])) {
   if (array_filter($errors)) {
     echo 'There are errors in the form';
   } else {
-    // redirect to home page
-    header('Location: index.php');
+
+    // get the data ready and protect from sql injection
+    $email = mysqli_real_escape_string($connection, $_POST['email']);
+    $title = mysqli_real_escape_string($connection, $_POST['title']);
+    $ingredients = mysqli_real_escape_string($connection, $_POST['ingredients']);
+
+    // create sql
+    $sql = "INSERT INTO sundaes(title, email, ingredients) VALUES('$title', '$email', '$ingredients')";
+
+    // save to database
+    if (mysqli_query($connection, $sql)) {
+      // success
+      // redirect to home page
+      header('Location: index.php');
+    } else {
+      // error
+      echo 'query error' . mysqli_error($connection);
+    }
   }
 } // end of POST check
 ?>
