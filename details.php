@@ -38,10 +38,11 @@ if (isset($_GET['id'])) {
     <p><?php echo htmlspecialchars($sundae['ingredients']); ?></p>
 
     <!-- DELETE FORM -->
-    <form>
+    <form action="details.php" method="POST">
       <input type="hidden" name="id_to_delete" value="<?php echo $sundae['id']; ?>">
       <input type="submit" name="delete" value="Delete" class="btn brand z-depth-0">
     </form>
+
   <?php else : ?>
     <h5>No such pizza exists!</h5>
   <?php endif ?>
