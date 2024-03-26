@@ -43,7 +43,7 @@ if (isset($_GET['id'])) {
 <html lang="en">
 <?php include('templates/header.php'); ?>
 
-<div class="container center">
+<div class="container center grey-text">
   <?php if ($sundae) : ?>
     <h4><?php
         echo htmlspecialchars($sundae['title']) ?></h4>
