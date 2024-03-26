@@ -13,7 +13,7 @@ if (!$connection) {
 }
 
 // write query for all sundaes
-$sql = 'SELECT  title, ingredients, id FROM sundaes';
+$sql = 'SELECT  title, ingredients, id FROM sundaes ORDER BY  created_at';
 
 // make query and get result (we can't use this format)
 $result = mysqli_query($connection, $sql);
@@ -27,7 +27,7 @@ mysqli_free_result($result);
 // close connection
 mysqli_close($connection);
 
-print_r($sundaes);
+
 
 ?>
 <!DOCTYPE html>
@@ -35,6 +35,30 @@ print_r($sundaes);
 
 <?php include('./templates/header.php'); ?>
 
+<h4 class="center grey-text">Sundaes!</h4>
+
+<div class="container">
+
+  <div class="row">
+
+    <?php foreach ($sundaes as $sundae) {
+    ?>
+      <div class="col s6 md3">
+        <div class="card z-depth-0">
+          <div class="card-content center">
+            <h6><?php echo htmlspecialchars($sundae['title']) ?></h6>
+            <div><?php echo htmlspecialchars($sundae['ingredients']) ?></div>
+          </div>
+          <div class="card-action right-align">
+            <a href="#" class="brand-text">More Info</a>
+          </div>
+        </div>
+      </div>
+
+    <?php } ?>
+  </div>
+
+</div>
 <?php include('./templates/footer.php'); ?>
 
 </body>
