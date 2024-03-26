@@ -41,7 +41,7 @@ mysqli_close($connection);
 
   <div class="row">
 
-    <?php foreach ($sundaes as $sundae) {
+    <?php foreach ($sundaes as $sundae) :
     ?>
       <div class="col s6 md3">
         <div class="card z-depth-0">
@@ -49,9 +49,9 @@ mysqli_close($connection);
             <h6><?php echo htmlspecialchars($sundae['title']) ?></h6>
             <div>
               <ul>
-                <?php foreach (explode(',', $sundae['ingredients']) as $ing) { ?>
+                <?php foreach (explode(',', $sundae['ingredients']) as $ing) : ?>
                   <li><?php echo htmlspecialchars(($ing)) ?></li>
-                <?php } ?>
+                <?php endforeach; ?>
               </ul>
             </div>
           </div>
@@ -61,7 +61,7 @@ mysqli_close($connection);
         </div>
       </div>
 
-    <?php } ?>
+    <?php endforeach; ?>
   </div>
 
 </div>
