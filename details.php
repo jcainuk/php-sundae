@@ -28,7 +28,18 @@ if (isset($_GET['id'])) {
 <html lang="en">
 <?php include('templates/header.php'); ?>
 
-<h2>details</h2>
+<div class="container center">
+  <?php if ($sundae) : ?>
+    <h4><?php
+        echo htmlspecialchars($sundae['title']) ?></h4>
+    <p>Created by: <?php echo htmlspecialchars($sundae['email']); ?></p>
+    <p><?php echo date($sundae['created_at']); ?></p>
+    <h5>Ingredients:</h5>
+    <p><?php echo htmlspecialchars($sundae['ingredients']); ?></p>
+  <?php else : ?>
+    <h5>No such pizza exists!</h5>
+  <?php endif ?>
+</div>
 
 <?php include('templates/footer.php'); ?>
 
