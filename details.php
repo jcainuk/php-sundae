@@ -2,6 +2,21 @@
 
 include('config/db_connect.php');
 
+if (isset($_POST['delete'])) {
+  $id_to_delete = mysqli_real_escape_string($connection, $_POST['id_to_delete']);
+
+  $sql = "DELETE FROM sundaes WHERE id = $id_to_delete";
+
+  if (mysqli_query($connection, $sql)) {
+    // success
+    header('Location: index.php');
+  } else {
+    // failure
+    echo 'query error:' . mysqli_error($connection);
+  }
+}
+
+
 // check GET request is param from global $_GET array
 if (isset($_GET['id'])) {
 
