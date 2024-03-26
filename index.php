@@ -62,6 +62,11 @@ mysqli_close($connection);
       </div>
 
     <?php endforeach; ?>
+    <?php if (count($sundaes) >= 2) : ?>
+      <p> there are 2 or more sundaes</p>
+    <?php else :  ?>
+      <p>there are less then 2 pizzas</p>
+    <?php endif; ?>
   </div>
 
 </div>
