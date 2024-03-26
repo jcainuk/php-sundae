@@ -36,6 +36,7 @@ mysqli_close($connection);
     ?>
       <div class="col s6 md3">
         <div class="card z-depth-0">
+          <img src="images/icecream.svg" alt="ice cream" class="ice-cream">
           <div class="card-content center">
             <h6><?php echo htmlspecialchars($sundae['title']) ?></h6>
             <div>
