@@ -27,7 +27,7 @@ mysqli_free_result($result);
 // close connection
 mysqli_close($connection);
 
-
+//explode(',', $sundaes[0]['ingredients']);
 
 ?>
 <!DOCTYPE html>
@@ -47,7 +47,13 @@ mysqli_close($connection);
         <div class="card z-depth-0">
           <div class="card-content center">
             <h6><?php echo htmlspecialchars($sundae['title']) ?></h6>
-            <div><?php echo htmlspecialchars($sundae['ingredients']) ?></div>
+            <div>
+              <ul>
+                <?php foreach (explode(',', $sundae['ingredients']) as $ing) { ?>
+                  <li><?php echo htmlspecialchars(($ing)) ?></li>
+                <?php } ?>
+              </ul>
+            </div>
           </div>
           <div class="card-action right-align">
             <a href="#" class="brand-text">More Info</a>
