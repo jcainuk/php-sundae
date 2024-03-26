@@ -1,16 +1,7 @@
 <?php
 
 // Include database configuration
-include('config.php');
-
-// connect to database
-$connection = mysqli_connect($db_host, $db_user, $db_password, $db_name);
-
-
-// check connection
-if (!$connection) {
-  echo 'Connection error' . mysqli_connect_error();
-}
+include('config/db_connect.php');
 
 // write query for all sundaes
 $sql = 'SELECT  title, ingredients, id FROM sundaes ORDER BY  created_at';
